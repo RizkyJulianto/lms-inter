@@ -14,8 +14,8 @@
         href="{{ route('event.qr.download', $event->id) }}"
         class="inline-flex items-center gap-2 px-4 py-2
                text-sm font-semibold text-white
-               bg-success-600 rounded-lg
-               hover:bg-success-500 transition">
+               bg-primary-600 rounded-lg
+               hover:bg-primary-500 transition" >
 
         {{-- Icon download --}}
         <svg xmlns="http://www.w3.org/2000/svg"

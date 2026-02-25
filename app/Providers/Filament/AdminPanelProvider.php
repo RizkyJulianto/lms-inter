@@ -2,14 +2,21 @@
 
 namespace App\Providers\Filament;
 
+use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use App\Filament\Auth\Login;
+use App\Filament\Pages\EditProfile;
+use App\Filament\Resources\FileResource;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Facades\Filament;
+use Filament\Navigation\MenuItem;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -18,13 +25,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
-use App\Filament\Auth\Login;
-use App\Filament\Pages\EditProfile;
-use Filament\Navigation\MenuItem;
-use App\Filament\Resources\FileUploadResource;
-use Filament\Navigation\NavigationItem;
-use Filament\View\PanelsRenderHook;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -77,7 +77,7 @@ class AdminPanelProvider extends PanelProvider
     protected function resources(): array
     {
         return [
-            FileUploadResource::class,
+            FileResource::class,
         ];
     }
 
@@ -85,7 +85,7 @@ class AdminPanelProvider extends PanelProvider
     {
         return [
             NavigationItem::make('File Uploads')
-                ->url(FileUploadResource::getUrl('index'))
+                ->url(FileResource::getUrl('index'))
                 ->icon('heroicon-o-paper-airplane'),
         ];
     }

@@ -54,7 +54,11 @@ class AttendanceScanController extends Controller
         // Isi point
         $attendance->update([
             'participation_score' => $event->point_reward,
+            
         ]);
+
+        $user = auth()->user();
+        $user->increment('total_point', $event->point_reward);
 
         return response()->json([
             'message' => 'Kehadiran berhasil dicatat',

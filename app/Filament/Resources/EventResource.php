@@ -46,13 +46,13 @@ class EventResource extends Resource
                 Section::make()->schema([
                     TextInput::make('name')->required()->placeholder('Name')->autofocus(),
                     Textarea::make('description')->required()->placeholder('Description'),
-                FileUpload::make('module')
-                    ->label('Modul Event')
-                    ->disk('public')
-                    ->directory('event-modules')
-                    ->acceptedFileTypes(['application/pdf'])
-                    ->maxSize(51200)
-                    ->preserveFilenames(),
+                    FileUpload::make('module')
+                        ->label('Modul Event')
+                        ->disk('public')
+                        ->directory('event-modules')
+                        ->acceptedFileTypes(['application/pdf'])
+                        ->maxSize(51200)
+                        ->preserveFilenames(),
                     TextInput::make('point_reward')
                         ->label('Point Reward')
                         ->numeric()
@@ -96,73 +96,78 @@ class EventResource extends Resource
                 //
             ])
             ->actions([
-            Tables\Actions\Action::make('qrAttendance')
-                ->label('QR Kehadiran')
-                ->icon('heroicon-o-qr-code')
-                ->color('primary')
+                Tables\Actions\Action::make('qrAttendance')
+                    ->label('QR Kehadiran')
+                    ->icon('heroicon-o-qr-code')
+                    ->color('primary')
 
-                ->visible(function () {
-
-                    if (! auth()->check()) {
-                        return false;
-                    }
-
-                    return auth()->user()
-                        ->roles
-                        ->pluck('name')
-                        ->intersect(['Admin', 'Super Admin'])
-                        ->isNotEmpty();
-                })
-
-                ->modalSubmitAction(false)
-                ->modalCancelActionLabel('Tutup')
-
-                ->modalHeading('QR Kehadiran Event')
-                ->modalContent(
-                    fn(Event $record) =>
-                    view('filament.qr-attendance', [
-                        'event' => $record,
-                        'token' => $record->attendance_token
+                    ->modalWidth('2xl')
+                    ->extraModalWindowAttributes([
+                        'style' => 'max-height: 90vh; overflow-y: auto;'
                     ])
-                ),
-            Tables\Actions\Action::make('scanAttendance')
-                ->label('Scan Kehadiran')
-                ->icon('heroicon-o-qr-code')
-                ->color('success')
 
-                ->visible(function (Event $record) {
+                    ->visible(function () {
 
-                    if (! auth()->check()) {
-                        return false;
-                    }
+                        if (! auth()->check()) {
+                            return false;
+                        }
 
-                    $user = auth()->user();
+                        return auth()->user()
+                            ->roles
+                            ->pluck('name')
+                            ->intersect(['Admin', 'Super Admin'])
+                            ->isNotEmpty();
+                    })
 
-                    $isAdmin = $user->roles
-                        ->pluck('name')
-                        ->intersect(['Admin', 'Super Admin'])
-                        ->isNotEmpty();
+                    ->modalSubmitAction(false)
+                    ->modalCancelActionLabel('Tutup')
 
-                    $alreadyJoin = $record->users->contains($user);
+                    ->modalHeading('QR Kehadiran Event')
+                    ->modalContent(
+                        fn(Event $record) =>
+                        view('filament.qr-attendance', [
+                            'event' => $record,
+                            'token' => $record->attendance_token
+                        ])
+                    ),
+                Tables\Actions\Action::make('scanAttendance')
+                    ->label('Scan Kehadiran')
+                    ->icon('heroicon-o-qr-code')
+                    ->color('success')
 
-                    return ! $isAdmin && $alreadyJoin;
-                })
+                    ->visible(function (Event $record) {
 
-                ->modalHeading('Scan QR Kehadiran')
+                        if (! auth()->check()) {
+                            return false;
+                        }
 
-                // WAJIB → supaya tombol Kirim hilang
-                ->modalSubmitAction(false)
+                        $user = auth()->user();
 
-                // optional → ubah tombol batal
-                ->modalCancelActionLabel('Tutup')
+                        $isAdmin = $user->roles
+                            ->pluck('name')
+                            ->intersect(['Admin', 'Super Admin'])
+                            ->isNotEmpty();
 
-                ->modalContent(
-                    fn($record) => view('attendance.scan', [
-                        'event' => $record,
-                    ])
-                ),
+                        $alreadyJoin = $record->users->contains($user);
 
-            Tables\Actions\Action::make('detail')
+                        return ! $isAdmin && $alreadyJoin;
+                    })
+
+                    ->modalHeading('Scan QR Kehadiran')
+
+
+                    ->modalSubmitAction(false)
+
+
+                    ->modalCancelActionLabel('Tutup')
+
+                    ->modalContent(
+                        fn($record) => view('attendance.scan', [
+                            'event' => $record,
+                        ])
+                    ),
+
+                Tables\Actions\Action::make('detail')
                     ->label('Detail')
                     ->icon('heroicon-o-eye')
                     ->color(Color::Gray)
@@ -181,27 +186,27 @@ class EventResource extends Resource
                         TextInput::make('name')
                             ->label('Nama Event')
                             ->readOnly(),
-                Forms\Components\Placeholder::make('module')
-                    ->label('Modul Event')
-                    ->content(function (Event $record) {
+                        Forms\Components\Placeholder::make('module')
+                            ->label('Modul Event')
+                            ->content(function (Event $record) {
 
-                        // Jika modul belum diupload
-                        if (! $record->module) {
-                            return new HtmlString('<span class="text-gray-500">-</span>');
-                        }
 
-                        // Jika belum hari event
-                        if (! now()->isSameDay($record->occasion_date)) {
-                            return new HtmlString(
-                                '<span class="text-sm text-warning-600">
+                                if (! $record->module) {
+                                    return new HtmlString('<span class="text-gray-500">-</span>');
+                                }
+
+                                // Jika belum hari event
+                                if (! now()->isSameDay($record->occasion_date)) {
+                                    return new HtmlString(
+                                        '<span class="text-sm text-warning-600">
                     Modul akan tersedia saat hari event
                 </span>'
-                            );
-                        }
+                                    );
+                                }
 
-                        // Jika hari event → tombol download
-                        return new HtmlString(
-                            '<a
+                                // Jika hari event → tombol download
+                                return new HtmlString(
+                                    '<a
                 href="' . route('event.download.module', $record) . '"
                 target="_blank"
                 class="inline-flex items-center gap-2 px-4 py-2
@@ -221,21 +226,21 @@ class EventResource extends Resource
                 </svg>
                 Download Modul
             </a>'
-                        );
-                    })
-                    ->extraAttributes([
-                        'class' => 'mt-0 space-y-0',
-                    ]),
+                                );
+                            })
+                            ->extraAttributes([
+                                'class' => 'mt-0 space-y-0',
+                            ]),
 
 
-                TextInput::make('point')
-                    ->label('Point yang Didapat')
-                    ->numeric()
-                    ->readOnly(),
-                ])
+                        TextInput::make('point')
+                            ->label('Point yang Didapat')
+                            ->numeric()
+                            ->readOnly(),
+                    ])
 
-                ->modalSubmitAction(false)
-                ->modalCancelAction(false),
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false),
 
                 /* ================= JOIN EVENT ================= */
                 Tables\Actions\Action::make('joinEventAction')
@@ -257,7 +262,7 @@ class EventResource extends Resource
 
                             $record->event_users()->attach($user->id, [
                                 'number_certificate' => $certificateNumber,
-                             ]);
+                            ]);
 
                             Attendance::create([
                                 'event_id' => $record->id,
@@ -270,41 +275,41 @@ class EventResource extends Resource
                     })
                     ->modalAlignment(Alignment::Center),
 
-            Tables\Actions\Action::make('cancelJoinEventAction')
-                ->label('Batal Join')
-                ->icon('heroicon-o-arrow-left-end-on-rectangle')
-                ->color(Color::Amber)
-                ->visible(fn(Event $record) => $record->users->contains(auth()->user()))
-                ->mountUsing(fn(Forms\ComponentContainer $form, Event $record) => $form->fill([
-                    'name' => $record->name,
-                    'description' => $record->description,
-                    'occasion_date' => $record->occasion_date,
-                    'quota' => $record->quota,
-                    'user_id' => Auth::user()->id
-                ]))
-                ->form([
-                    Select::make('user_id')
-                        ->label('Sebagai')
-                        ->options(User::query()->pluck('name', 'id')),
-                    TextInput::make('name')->label('Nama Event'),
-                    Textarea::make('description')->label('Deskripsi'),
-                    TextInput::make('occasion_date')->label('Tanggal Acara')
-                ])
-                ->action(function (array $data, Event $record) {
-                    DB::transaction(function () use ($data, $record) {
-                        $record->users()->detach($data['user_id']);
-                        $record->event_users()->detach($data['user_id']);
+                Tables\Actions\Action::make('cancelJoinEventAction')
+                    ->label('Batal Join')
+                    ->icon('heroicon-o-arrow-left-end-on-rectangle')
+                    ->color(Color::Amber)
+                    ->visible(fn(Event $record) => $record->users->contains(auth()->user()))
+                    ->mountUsing(fn(Forms\ComponentContainer $form, Event $record) => $form->fill([
+                        'name' => $record->name,
+                        'description' => $record->description,
+                        'occasion_date' => $record->occasion_date,
+                        'quota' => $record->quota,
+                        'user_id' => Auth::user()->id
+                    ]))
+                    ->form([
+                        Select::make('user_id')
+                            ->label('Sebagai')
+                            ->options(User::query()->pluck('name', 'id')),
+                        TextInput::make('name')->label('Nama Event'),
+                        Textarea::make('description')->label('Deskripsi'),
+                        TextInput::make('occasion_date')->label('Tanggal Acara')
+                    ])
+                    ->action(function (array $data, Event $record) {
+                        DB::transaction(function () use ($data, $record) {
+                            $record->users()->detach($data['user_id']);
+                            $record->event_users()->detach($data['user_id']);
 
-                        $record->quota += 1;
-                        $record->save();
-                    });
-                })
-                ->disabledForm()
-                ->modalAlignment(Alignment::Center)
-                ->modalSubmitAction(fn(StaticAction $action) => $action->label('Batal Join')),
+                            $record->quota += 1;
+                            $record->save();
+                        });
+                    })
+                    ->disabledForm()
+                    ->modalAlignment(Alignment::Center)
+                    ->modalSubmitAction(fn(StaticAction $action) => $action->label('Batal Join')),
 
 
-            Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
 

@@ -25,4 +25,9 @@ class CreateEvent extends CreateRecord
         $data['division_id'] = $division_id;
         return $data;
     }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
