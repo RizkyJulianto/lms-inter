@@ -54,7 +54,7 @@ class AttendanceScanController extends Controller
         // Isi point
         $attendance->update([
             'participation_score' => $event->point_reward,
-            
+
         ]);
 
         $user = auth()->user();
@@ -66,15 +66,15 @@ class AttendanceScanController extends Controller
         ]);
     }
     public function downloadPng(Event $event)
-{
-    $svg = QrCode::size(800)
-        ->generate($event->attendance_token);
+    {
+        $svg = QrCode::size(800)
+            ->generate($event->attendance_token);
 
-    return response($svg)
-        ->header('Content-Type', 'image/svg+xml')
-        ->header(
-            'Content-Disposition',
-            'attachment; filename="qr-event-'.$event->id.'.svg"'
-        );
-}
+        return response($svg)
+            ->header('Content-Type', 'image/svg+xml')
+            ->header(
+                'Content-Disposition',
+                'attachment; filename="qr-event-' . $event->id . '.svg"'
+            );
+    }
 }

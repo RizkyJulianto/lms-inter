@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\UserResource\Pages;
 
+use App\Exports\UsersPointExport;
 use App\Filament\Resources\UserResource;
 use App\Models\User;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Konnco\FilamentImport\Actions\ImportAction;
 use Konnco\FilamentImport\Actions\ImportField;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ListUsers extends ListRecords
 {
@@ -40,6 +42,12 @@ class ListUsers extends ListRecords
                     $user->assignRole('Member');
                     return $user;
                 }),
+            Actions\Action::make('export')
+                ->label('Export')
+                ->action(fn() => Excel::download(
+                    new UsersPointExport,
+                    'users-point.xlsx'
+                )),
         ];
     }
 }

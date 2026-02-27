@@ -56,7 +56,9 @@ class EventResource extends Resource
                     TextInput::make('point_reward')
                         ->label('Point Reward')
                         ->numeric()
-                        ->required(),
+                        ->required()
+                        ->maxValue(10)
+                        ->helperText('Maksimal 10 poin'),
                     TextInput::make('occasion_date')
                         ->type('datetime-local')
                         ->required()
@@ -254,8 +256,28 @@ class EventResource extends Resource
                     )
                     ->visible(fn(Event $record) => !$record->users->contains(auth()->user()))
                     ->action(function (Event $record) {
-                        DB::transaction(function () use ($record) {
-                            $user = Auth::user();
+
+                        $user = Auth::user();
+
+                        $eventDateOnly = Carbon::parse($record->occasion_date)->toDateString();
+
+                        $alreadyJoinSameDate = Attendance::where('user_id', $user->id)
+                            ->whereHas('event', function ($query) use ($eventDateOnly) {
+                                $query->whereDate('occasion_date', $eventDateOnly);
+                            })
+                            ->exists();
+
+                        if ($alreadyJoinSameDate) {
+                            Notification::make()
+                                ->title('Gagal Join')
+                                ->body('Kamu sudah join event lain di tanggal tersebut.')
+                                ->danger()
+                                ->send();
+
+                            return;
+                        }
+
+                        DB::transaction(function () use ($record, $user) {
 
                             $certificateNumber = (new CertificateController)
                                 ->generateCertificateNumber($record, $user);
@@ -267,11 +289,16 @@ class EventResource extends Resource
                             Attendance::create([
                                 'event_id' => $record->id,
                                 'user_id' => $user->id,
-                                'participation_score' => 0, // isi setelah event
+                                'participation_score' => 0,
                             ]);
 
                             $record->decrement('quota');
                         });
+
+                        Notification::make()
+                            ->title('Berhasil Join Event')
+                            ->success()
+                            ->send();
                     })
                     ->modalAlignment(Alignment::Center),
 
