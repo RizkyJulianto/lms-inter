@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
 
         $member1 = User::factory()->create([
             'email' => 'member1@gmail.com',
-            'division_id' => '05ca9b6e-c6d3-4c3 b-bf66-861d89e4137a',
+            'division_id' => '05ca9b6e-c6d3-4c3b-bf66-861d89e4137a',
             'username' => 'member1',
         ]);
         $member1->assignRole('Member');
