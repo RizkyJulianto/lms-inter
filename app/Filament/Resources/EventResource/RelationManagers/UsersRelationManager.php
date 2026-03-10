@@ -38,10 +38,13 @@ class UsersRelationManager extends RelationManager
                 ->relationship('users', 'name')
                 ->required()
                 ->hiddenOn('edit'),
-            Forms\Components\Checkbox::make('is_competence'),
-            Forms\Components\TextInput::make('final_project_link'),
-            Forms\Components\TextInput::make('submission_score'),
-            Forms\Components\TextInput::make('participation_score'),
+            Forms\Components\Checkbox::make('is_competence')
+                ->visible(fn () => $this->getOwnerRecord()->has_final_project),
+            Forms\Components\TextInput::make('final_project_link')
+                ->label('Final Project Link')
+                ->visible(fn () => $this->getOwnerRecord()->has_final_project),
+            Forms\Components\TextInput::make('submission_score')
+                ->visible(fn () => $this->getOwnerRecord()->has_final_project),
         ]);
     }
 
@@ -52,16 +55,18 @@ class UsersRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('name')->label('User Name'),
                 Tables\Columns\TextColumn::make('username'),
-                Tables\Columns\IconColumn::make('is_competence')
+                Tables\Columns\IconColumn::make('pivot.is_competence')
+                    ->label('Kompeten')
                     ->boolean()
                     ->trueIcon('heroicon-o-check-badge')
                     ->falseIcon('heroicon-o-x-circle'),
-                Tables\Columns\TextColumn::make('final_project_link')
-                    ->copyable()
-                    ->copyMessage('Final project copied')
-                    ->copyMessageDuration(1500),
-                Tables\Columns\TextColumn::make('submission_score'),
-                Tables\Columns\TextColumn::make('participation_score'),
+                Tables\Columns\TextColumn::make('pivot.final_project_link')
+                ->label('Final Project')
+                ->url(fn($record) => $record->pivot->final_project_link)
+                ->openUrlInNewTab()
+                ->icon('heroicon-m-arrow-top-right-on-square'),
+                Tables\Columns\TextColumn::make('pivot.submission_score')
+                    ->label('Nilai'),
             ])
             ->filters([
                 //
@@ -97,23 +102,55 @@ class UsersRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+            Tables\Actions\Action::make('validateFinalProject')
+                ->label('Validasi')
+                ->icon('heroicon-o-check-circle')
+                ->color('success')
+
+                ->visible(function (User $user) {
+
+                    if (! $this->getOwnerRecord()->has_final_project) {
+                        return false;
+                    }
+
+                    return $user->pivot->final_project_link
+                        && ! $user->pivot->validated_at;
+                })
+
+                ->action(function (User $user) {
+
+                    $this->getOwnerRecord()
+                        ->attendances()
+                        ->where('user_id', $user->id)
+                        ->update([
+                            'validated_at' => now(),
+                            'is_competence' => true,
+                        ]);
+
+                    \Filament\Notifications\Notification::make()
+                        ->title('Final Project berhasil divalidasi')
+                        ->success()
+                        ->send();
+                }),
                 Tables\Actions\DetachAction::make(),
-                Tables\Actions\Action::make('viewCertificateAction')
-                    ->label('Preview Sertifikat')
-                    ->icon('heroicon-o-document-text')
-                    ->visible(function (User $user) {
-                        $record = $this->getOwnerRecord();
-                        $attendance = $record->attendances()
-                            ->where('user_id', $user->id)
-                            ->first();
-                        $isScoresFilled = $attendance && !is_null($attendance->submission_score) && !is_null($attendance->participation_score);
-                        return $isScoresFilled;
-                    })
-                    ->url(function (User $user) {
-                        $record = $this->getOwnerRecord();
-                        return route('certificate.view', ['id' => $record->id, 'event' => $record->id, 'user' => $user->id]);
-                    })
-                    ->openUrlInNewTab(),
+            Tables\Actions\Action::make('viewCertificateAction')
+                ->label('Preview Sertifikat')
+                ->icon('heroicon-o-document-text')
+
+                ->visible(function (User $user) {
+
+                    if (! $this->getOwnerRecord()->has_final_project) {
+                        return false;
+                    }
+
+                    return $user->pivot->is_competence;
+                })
+
+                ->url(fn($record) => route(
+                    'certificate.view',
+                    $this->getOwnerRecord()->id
+                ) . '?user=' . $record->id)
+                ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

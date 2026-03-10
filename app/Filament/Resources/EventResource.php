@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+
 use App\Filament\Resources\EventResource\Pages;
 use App\Http\Controllers\CertificateController;
 use App\Filament\Resources\EventResource\RelationManagers;
@@ -53,6 +54,16 @@ class EventResource extends Resource
                         ->acceptedFileTypes(['application/pdf'])
                         ->maxSize(51200)
                         ->preserveFilenames(),
+                Forms\Components\Checkbox::make('has_task')
+                    ->label('Event ini memiliki tugas')
+                    ->default(false)
+                    ->reactive()
+                    ->disabled(fn($get) => $get('has_final_project')),
+                Checkbox::make('has_final_project')
+                    ->label('Event Final Project')
+                    ->default(false)
+                    ->reactive()
+                    ->disabled(fn($get) => $get('has_task')),
                     TextInput::make('point_reward')
                         ->label('Point Reward')
                         ->numeric()
@@ -108,7 +119,11 @@ class EventResource extends Resource
                         'style' => 'max-height: 90vh; overflow-y: auto;'
                     ])
 
-                    ->visible(function () {
+                    ->visible(function (Event $record) {
+
+                        if ($record->has_final_project) {
+                            return false;
+                        }
 
                         if (! auth()->check()) {
                             return false;
@@ -139,6 +154,9 @@ class EventResource extends Resource
 
                     ->visible(function (Event $record) {
 
+                        if ($record->has_final_project) {
+                            return false;
+                        }
                         if (! auth()->check()) {
                             return false;
                         }
@@ -168,6 +186,42 @@ class EventResource extends Resource
                             'event' => $record,
                         ])
                     ),
+            Tables\Actions\Action::make('cekTugasUser')
+                ->label('Cek Tugas')
+                ->icon('heroicon-o-link')
+                ->color('info')
+
+                ->visible(function (Event $record) {
+
+                    if (!auth()->check()) {
+                        return false;
+                    }
+
+                    $isAdmin = auth()->user()
+                        ->roles
+                        ->pluck('name')
+                        ->intersect(['Admin', 'Super Admin'])
+                        ->isNotEmpty();
+
+                    return $isAdmin && $record->has_task && !$record->has_final_project;
+                })
+
+                ->modalHeading('Daftar Tugas User')
+
+                ->modalSubmitAction(false)
+
+                ->modalCancelActionLabel('Tutup')
+
+                ->modalContent(function (Event $record) {
+
+                    $attendances = \App\Models\Attendance::where('event_id', $record->id)
+                        ->with('user')
+                        ->get();
+
+                    return view('filament.admin.cek-tugas', [
+                        'attendances' => $attendances
+                    ]);
+                }),
 
                 Tables\Actions\Action::make('detail')
                     ->label('Detail')
@@ -182,33 +236,36 @@ class EventResource extends Resource
                         $form->fill([
                             'name' => $record->name,
                             'point' => $record->point_reward,
+                            'final_project_link' => $attendance?->final_project_link,
                         ]);
                     })
                     ->form([
                         TextInput::make('name')
                             ->label('Nama Event')
                             ->readOnly(),
-                        Forms\Components\Placeholder::make('module')
-                            ->label('Modul Event')
-                            ->content(function (Event $record) {
+                Forms\Components\Placeholder::make('module')
+                    ->label('Modul Event')
+                    ->content(function (Event $record) {
 
+                        if (! $record->module) {
+                            return new HtmlString('<span class="text-gray-500">-</span>');
+                        }
 
-                                if (! $record->module) {
-                                    return new HtmlString('<span class="text-gray-500">-</span>');
-                                }
+                        $eventDate = \Carbon\Carbon::parse($record->occasion_date)->startOfDay();
+                        $today     = now()->startOfDay();
 
-                                // Jika belum hari event
-                                if (! now()->isSameDay($record->occasion_date)) {
-                                    return new HtmlString(
-                                        '<span class="text-sm text-warning-600">
+                        // Jika masih sebelum hari event
+                        if ($today->lt($eventDate)) {
+                            return new HtmlString(
+                                '<span class="text-sm text-warning-600">
                     Modul akan tersedia saat hari event
                 </span>'
-                                    );
-                                }
+                            );
+                        }
 
-                                // Jika hari event → tombol download
-                                return new HtmlString(
-                                    '<a
+                        // Hari event & setelah event → boleh download
+                        return new HtmlString(
+                            '<a
                 href="' . route('event.download.module', $record) . '"
                 target="_blank"
                 class="inline-flex items-center gap-2 px-4 py-2
@@ -228,21 +285,127 @@ class EventResource extends Resource
                 </svg>
                 Download Modul
             </a>'
-                                );
-                            })
-                            ->extraAttributes([
-                                'class' => 'mt-0 space-y-0',
-                            ]),
+                        );
+                    })
+                    ->extraAttributes([
+                        'class' => 'mt-0 space-y-0',
+                    ]),
+
+                TextInput::make('final_project_link')
+                    ->label('Link Pengumpulan Tugas')
+                    ->placeholder('https://...')
+                    ->url()
+                    ->required()
+                    ->visible(
+                        fn(Event $record) =>
+                        $record->has_task || $record->has_final_project
+                    )// 🔹 hanya muncul jika ada tugas
+                    ->disabled(function (Event $record) {
+
+                        $eventDate = Carbon::parse($record->occasion_date)->startOfDay();
+
+                        return now()->startOfDay()->lt($eventDate);
+                    }),
 
 
                         TextInput::make('point')
                             ->label('Point yang Didapat')
                             ->numeric()
-                            ->readOnly(),
+                            ->readOnly()
+                            ->visible(fn(Event $record) => !$record->has_final_project),
+
                     ])
 
-                    ->modalSubmitAction(false)
-                    ->modalCancelAction(false),
+                ->modalSubmitAction(function (StaticAction $action, Event $record) {
+
+                // 🔹 jika tidak ada tugas → hilangkan tombol submit
+                if (! ($record->has_task || $record->has_final_project)) {
+                    return $action->hidden();
+                }
+
+                    $attendance = $record->attendances()
+                        ->where('user_id', auth()->id())
+                        ->first();
+
+                    return $action->label(
+                        $attendance && $attendance->final_project_link
+                            ? 'Batal Submit'
+                            : 'Submit Tugas'
+                    );
+                })
+
+                ->modalCancelActionLabel('Tutup')
+
+                ->action(function (array $data, Event $record) {
+
+                abort_if(! ($record->has_task || $record->has_final_project), 403);
+
+                    $attendance = Attendance::where('event_id', $record->id)
+                        ->where('user_id', auth()->id())
+                        ->firstOrFail();
+
+                    $eventDate = Carbon::parse($record->occasion_date)->startOfDay();
+
+                    abort_if(
+                        now()->startOfDay()->lt($eventDate),
+                        403,
+                        'Pengumpulan tugas belum dibuka'
+                    );
+
+                    abort_if(
+                        $attendance->validated_at !== null,
+                        403,
+                        'Tugas sudah divalidasi'
+                    );
+
+                    if ($attendance->final_project_link) {
+
+                        $attendance->update([
+                            'final_project_link' => null,
+                        ]);
+
+                        Notification::make()
+                            ->title('Submit tugas dibatalkan')
+                            ->warning()
+                            ->send();
+                    } else {
+
+                        $attendance->update([
+                            'final_project_link' => $data['final_project_link'],
+                        ]);
+
+                        Notification::make()
+                            ->title('Tugas berhasil dikumpulkan')
+                            ->success()
+                            ->send();
+                    }
+                }),
+            /* ================= SERTIFIKAT ================= */
+
+            Tables\Actions\Action::make('downloadCertificate')
+                ->label('Sertifikat')
+                ->icon('heroicon-o-document-arrow-down')
+                ->color('success')
+
+                ->visible(function (Event $record) {
+
+                    if (!$record->has_final_project) {
+                        return false;
+                    }
+
+                    $attendance = $record->attendances()
+                        ->where('user_id', auth()->id())
+                        ->first();
+
+                    return $attendance && $attendance->validated_at;
+                })
+
+                ->url(function (Event $record) {
+
+                    return route('certificate.view', $record->id) . '?user=' . auth()->id();
+                })
+
+                ->openUrlInNewTab(),
 
                 /* ================= JOIN EVENT ================= */
                 Tables\Actions\Action::make('joinEventAction')

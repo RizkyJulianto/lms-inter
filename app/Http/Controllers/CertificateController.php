@@ -56,7 +56,6 @@ class CertificateController extends Controller
 
         if ($attendance) {
             return [
-                'participantValue' => $attendance->participation_score,
                 'submissionValue' => $attendance->submission_score,
             ];
         }
@@ -84,7 +83,8 @@ class CertificateController extends Controller
     public function downloadCertificate($eventId)
     {
         $event = Event::findOrFail($eventId);
-        $user = User::find(request('user'));
+        $userId = request('user') ?? auth()->id();
+        $user = User::findOrFail($userId);
 
         $pivotData = $event->event_users()->where('user_id', $user->id)->first();
 
@@ -169,14 +169,18 @@ class CertificateController extends Controller
         $pdf->Cell($contentWidth, $noSertifHeight, "Nomor: " . strtoupper($certificateNumber), 0, 1, 'C', true);
 
         $pdf->Ln($startScoreBoxY - ($startYNoSertif + $noSertifHeight));
-        $pdf->setFont('', 'B', 15);
-        $pdf->Cell($startScoreBoxX, $scoreBoxHeight, '', 0, 0);
-        $pdf->Cell($scoreBoxWidth, $scoreBoxHeight, $attendanceValues['participantValue'], 0, 1, 'C', true);
 
-        $pdf->Ln(0.5); // Box Border Thickness
         $pdf->setFont('', 'B', 15);
         $pdf->Cell($startScoreBoxX, $scoreBoxHeight, '', 0, 0);
-        $pdf->Cell($scoreBoxWidth, $scoreBoxHeight, $attendanceValues['submissionValue'], 0, 1, 'C', true);
+        $pdf->Cell(
+            $scoreBoxWidth,
+            $scoreBoxHeight,
+            $attendanceValues['submissionValue'],
+            0,
+            1,
+            'C',
+            true
+        );
 
         // $pdf->Image(resource_path('images/signature-febri.png'), 140.21, 160.78, 25.23, 25.23);
 
