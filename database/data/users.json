@@ -1,0 +1,744 @@
+{
+    "data": [
+        {
+            "nama": "Bagus Setiawan",
+            "nim": "24SA11A028",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Bima Singgih Pamungkas",
+            "nim": "25SA11A053",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Davy Irsyad Tulloh",
+            "nim": "24SA31A055",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Deden Tri Aditya Kurniawan",
+            "nim": "25SA11A197",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Dimas Dharmakusuma",
+            "nim": "25SA21A092",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Dinda Isna Nurlaeli",
+            "nim": "24SA21A022",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Dini Suci Inayatus Saniah",
+            "nim": "25SA21A060",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Diva Aura Jelita",
+            "nim": "25SA31A030",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Duiki Arbiyan",
+            "nim": "24SA31A008",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Faizurrohim Ramadhani",
+            "nim": "24SA21A045",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Farindra Haziq Nur Faqih",
+            "nim": "25SA11A121",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Febryan Yudi Saputra",
+            "nim": "25SA11A019",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Firdaus Purwantoro",
+            "nim": "24SA21A024",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Fondyta Putri Bercahya Binar berbinar",
+            "nim": "24SB11A018",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Galang Pradana",
+            "nim": "24SA31A062",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Hammam Haidar Rafif Bhamakerti",
+            "nim": "25SA31A058",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Hendrawan Trijatniko Saputra",
+            "nim": "25SA11A141",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Igo Tegar Prambudhy",
+            "nim": "24SA11A159",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Ilham Firmansyah",
+            "nim": "24SA11A130",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "ILHAM GUSTI PRATAMA",
+            "nim": "25SA11A190",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Izzati Shafa",
+            "nim": "24SA11A154",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Kevin Dwi Saputro",
+            "nim": "24SA11A131",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Khusnul Khotimah",
+            "nim": "24SA21A106",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Lilis Adi Pratiwi",
+            "nim": "25SB31A002",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "M.AKHLAM BAGHIS ALHAKKANI",
+            "nim": "25SA11A146",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "M Bryan Kaska Nurhakim",
+            "nim": "24SA11A068",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Ma'ruf Amrulloh",
+            "nim": "24SA31A001",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Marisha Setiyani",
+            "nim": "25SA21A076",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Mayada Beni Pratiwi",
+            "nim": "25SB11A021",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Maylinda Eka Saputri",
+            "nim": "25SA31A049",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Miftanur Fauzi",
+            "nim": "25SA11A114",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Muhammad Bintang Ramadhan",
+            "nim": "24SA21A015",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Muhammad Rafli Valdrian",
+            "nim": "24SA31A033",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nabiha Zidan Zuhayr",
+            "nim": "25SA11A182",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nalendra Alamsyah Sutomo",
+            "nim": "24SA11A021",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Naufal Faiz Hartanto",
+            "nim": "25SA21A048",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Naufal Muhamad Dzaky",
+            "nim": "25SA11A189",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nibras Asykar Zen",
+            "nim": "24SA31A028",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Niessye Hani Wijaya",
+            "nim": "24SA21A029",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nisa Aprilia",
+            "nim": "25SA11A184",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nofryan Pradiva Utama",
+            "nim": "23SA11A189",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Novaneza Rasendriya",
+            "nim": "25SA11A120",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nur Baitirrohmah",
+            "nim": "24SA11A144",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Nuril Rizqian Ar Ridho",
+            "nim": "24SA11A088",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Pria Ikhlas Sambada",
+            "nim": "25SA11A021",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Putri Danysha Satriani",
+            "nim": "25SA11A135",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Rahmat Hidayat Sianturi",
+            "nim": "24SA21A101",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Raras Fatimah",
+            "nim": "25SB11A058",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Rasya Nizar Pradipa",
+            "nim": "24SA31A061",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Rizky Julianto",
+            "nim": "24SA11A161",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Robbyco Elang Yanuar",
+            "nim": "25SA11A076",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Rubben Mulyo Santoso",
+            "nim": "25SA11A059",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Sandi Maulana",
+            "nim": "25SA21A079",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Sofyan Khoiron Mukhlis",
+            "nim": "24SA11A033",
+            "division_id": "05ca9b6e-c6d3-4c3b-bf66-861d89e4137a"
+        },
+        {
+            "nama": "Abidah Ardelia Kendra Wibowo",
+            "nim": "25SB11A133",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Adhelya Putri Fesa Pratama",
+            "nim": "24SB21A032",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Adib Rizki Aji",
+            "nim": "24SA11A035",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Adibah Nur Fadhilah",
+            "nim": "25SB11A086",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Adrinedo Dean Nugroho",
+            "nim": "24SA11A148",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Ahlan Cahya Purbanegara",
+            "nim": "25SB11A141",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Aisya Putri Amelia",
+            "nim": "25SB11A015",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Akhdani Wafiq Ramadhan",
+            "nim": "24SA11A002",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Alfan Fahri Syah",
+            "nim": "25SB11A025",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Aneira Margarievida Putri",
+            "nim": "24SB21A017",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Angga Nur Rakhmat",
+            "nim": "25SB21A032",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Arvita Tivanny Ellen",
+            "nim": "23SA21A035",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Asifuddin Zuhdi",
+            "nim": "25SB11A065",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Ayu Apriliana maharani",
+            "nim": "25SA21A050",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Bagas Adhiel Firmansyah",
+            "nim": "24SA11A045",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Bella Indah Rachmawati",
+            "nim": "23SA31A010",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Daway Rahmat Tinata",
+            "nim": "25SB11A057",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "De Ajeng Vien Saputri",
+            "nim": "25SA11A118",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Dea Bella Sarmila",
+            "nim": "24SA21A254",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Dias Catur Putra",
+            "nim": "25SA11A007",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Dwi Rizkia Ashari",
+            "nim": "24SA21A255",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Fabian Adi Prabhawa Putra",
+            "nim": "24SA21A025",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Fajar Suci Lestari",
+            "nim": "24SB21A066",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Fani Ermawati",
+            "nim": "24SB21A072",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Farrel Ega Saputra",
+            "nim": "24SB21A019",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Fawwaz Zaharza Al Baihaqi",
+            "nim": "25SA11A094",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Febrian Falentino",
+            "nim": "23SB11A059",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Febriyan Tri Qosdhu Waridho",
+            "nim": "25SB11A105",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Friska Amalia Putri",
+            "nim": "24SB11A017",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Friska Pebriani",
+            "nim": "25SB11A142",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Helen Nur Amelia",
+            "nim": "25SB21A013",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Husna lathifunnisa",
+            "nim": "24SA31A045",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Indah Febriyanti",
+            "nim": "25SB11A006",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Kaldea Kaila Asyanti",
+            "nim": "24SA31A063",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Khansa Hasna Putri Karunia",
+            "nim": "24SB21A031",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Lailatul Mauliyah",
+            "nim": "25SB11A112",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Marsyah Fadila Az -Zahro",
+            "nim": "24SA11A016",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Nabiha Alfi Damara",
+            "nim": "24SA31A030",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Nandia Triyusvita",
+            "nim": "25SA11A038",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Niha Octafiana Ramadhani",
+            "nim": "25SB21A014",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Noval Raditya Dwi Saputra",
+            "nim": "24SA11A083",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Ozi Prasetyo",
+            "nim": "25SA11A169",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Putri Zhafira Khoirusyifa",
+            "nim": "25SB11A022",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Rahma Amelia Agustin",
+            "nim": "24SB21A052",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Rahmat Hidayat",
+            "nim": "24SA11A092",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Renita Anjani",
+            "nim": "25SA21A036",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Rofik Agus Kurniawan",
+            "nim": "25SB11A078",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Sabna Dwi Agustina",
+            "nim": "25SB11A148",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Salwa Aulia Balqis",
+            "nim": "25SB21A046",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Seneng Rahayu",
+            "nim": "24SA31A048",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Shelsilya Dwi Agustin",
+            "nim": "25SB21A030",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Sukma Nur Rohim",
+            "nim": "24SA11A137",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Titis Ayuning Tias",
+            "nim": "24SA21A276",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Vonny pramadhanti",
+            "nim": "24SB21A071",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Yoseph febrian",
+            "nim": "25SA11A039",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Yuliana",
+            "nim": "24SA11A043",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Yusi Maelani",
+            "nim": "24SA11A103",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Yusuf Bahtiar",
+            "nim": "25SB31A011",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Zahra firmalia rosa",
+            "nim": "25SB21A162",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Zaidan Haidar Syahputra",
+            "nim": "24SB21A015",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Zalfa Maulidya Imanda",
+            "nim": "25SB11A124",
+            "division_id": "99ecaa05-018e-4f95-9e61-63db1356d6c3"
+        },
+        {
+            "nama": "Arezou Ghoyah Arridwan Syafii",
+            "nim": "25SA21A095",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Arya mahendra",
+            "nim": "24SA11A115",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Daffa Maulana Akhmad Muzzaki",
+            "nim": "24SA31A019",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Daud Zulfikarrea",
+            "nim": "24SA11A061",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Deny Ardiansah",
+            "nim": "24SA11A126",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Faiq irfandi salim",
+            "nim": "24SA31A044",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Febrian Bagus Utomo",
+            "nim": "25SA31A044",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Fiqih Munandar",
+            "nim": "24SA11A005",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Hasri Afra Annisa Athahirah",
+            "nim": "25SA11A122",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Hevi Revaliana",
+            "nim": "25SB11A101",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Kaffqa Tegar Gayuh Pamungkas",
+            "nim": "25SA21A087",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Moch Iqbal Purnama",
+            "nim": "25SA21A040",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Mohammad Nur Irsyad",
+            "nim": "25SA21A071",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Muhammad Haikal Amri",
+            "nim": "25SA31A014",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Muhammad Nabil Zidan",
+            "nim": "25SA21A094",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Muhammad Zufar Fakhriansyah",
+            "nim": "24SA11A079",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Nadea Nawal Syefira",
+            "nim": "25SA21A051",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Nur Muhamad Dwi Jayanto",
+            "nim": "24SA21A046",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Nurul Anwar",
+            "nim": "25SA11A152",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Radit Saputra",
+            "nim": "25SA11A126",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Radith Saifurrohman",
+            "nim": "25SA11A142",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Rafi Nail Praditama",
+            "nim": "25SA21A011",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Renny Nur Erlita",
+            "nim": "24SA21A098",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Ridho Mutaali Qodri",
+            "nim": "25SA11A153",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Ristian Lutfani",
+            "nim": "25SA11A181",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Rizki Triananda",
+            "nim": "25SA11A159",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Singgih Aprilianto",
+            "nim": "25SA11A154",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Siti Halimah",
+            "nim": "25SB11A114",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Syahdan Jamjami",
+            "nim": "25SA11A168",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Vino Yustanto Afriansyah",
+            "nim": "25SA31A001",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Yanuar Dwi Laksono",
+            "nim": "25SA11A138",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Yuniar Akbar Nuroyan",
+            "nim": "25SA11A144",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        },
+        {
+            "nama": "Zamita Muyassaroh",
+            "nim": "25SA21A004",
+            "division_id": "64e2f870-0b1d-4a69-9098-4f57a80dbe5e"
+        }
+    ]
+}

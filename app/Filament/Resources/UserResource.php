@@ -6,6 +6,7 @@ use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Filament\Resources\UserResource\RelationManagers\DivisionRelationManager;
 use App\Models\Division;
+use App\Models\PointHistory;
 use App\Models\Role;
 use App\Models\User;
 use Filament\Forms;
@@ -18,6 +19,7 @@ use Filament\Pages\Actions\SelectAction;
 use Filament\Pages\Page;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Resources\Resource;
+use Filament\Notifications\Notification;
 use Filament\Support\View\Components\Modal;
 use Filament\Tables;
 use Filament\Tables\Actions\BulkAction;
@@ -57,7 +59,7 @@ class UserResource extends Resource
                             ->dehydrated(fn (?string $state): bool => filled($state)),
 
                         Select::make('roles')->multiple()->relationship('roles', 'name')->required()->options(Role::all()->pluck('name', 'id')),
-                        TextInput::make('total_point')->disabled()
+                        TextInput::make('total_point')->numeric()->readOnly()->default(0)
                     ]),
                 Forms\Components\Section::make()
                     ->schema([
@@ -86,7 +88,52 @@ class UserResource extends Resource
             ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            ])
+            Tables\Actions\Action::make('addPoint')
+                ->label('Tambah Point')
+                ->icon('heroicon-o-plus')
+                ->color('success')
+
+                ->form([
+                    TextInput::make('point')
+                        ->label('Jumlah Point')
+                        ->numeric()
+                        ->required(),
+
+                    Select::make('type')
+                        ->label('Jenis')
+                        ->options([
+                            'event' => 'Event',
+                            'piket' => 'Piket',
+                            'bonus' => 'Bonus',
+                            'manual' => 'Manual',
+                        ])
+                        ->required(),
+
+                    TextInput::make('description')
+                        ->label('Keterangan'),
+                ])
+
+                ->action(function ($record, array $data) {
+
+                    // ✅ tambah total point
+                    $record->increment('total_point', $data['point']);
+
+                    // ✅ simpan ke history
+                    PointHistory::create([
+                        'user_id' => $record->id, // UUID aman
+                        'point' => $data['point'],
+                        'type' => $data['type'],
+                        'description' => $data['description'],
+                    ]);
+
+                    // ✅ notifikasi
+                    Notification::make()
+                        ->title('Point berhasil ditambahkan')
+                        ->success()
+                        ->send();
+                }),
+
+        ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

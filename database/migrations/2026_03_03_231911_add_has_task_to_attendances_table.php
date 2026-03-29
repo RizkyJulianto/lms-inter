@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('attendances', function (Blueprint $table) {
-            $table->string('final_project_link')->nullable()->after('has_task');
+            $table->boolean('has_task')->default(false);
         });
     }
 
