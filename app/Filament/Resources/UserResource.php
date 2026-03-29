@@ -104,8 +104,6 @@ class UserResource extends Resource
                         ->options([
                             'event' => 'Event',
                             'piket' => 'Piket',
-                            'bonus' => 'Bonus',
-                            'manual' => 'Manual',
                         ])
                         ->required(),
 
@@ -115,18 +113,15 @@ class UserResource extends Resource
 
                 ->action(function ($record, array $data) {
 
-                    // ✅ tambah total point
                     $record->increment('total_point', $data['point']);
 
-                    // ✅ simpan ke history
                     PointHistory::create([
-                        'user_id' => $record->id, // UUID aman
+                        'user_id' => $record->id,
                         'point' => $data['point'],
                         'type' => $data['type'],
                         'description' => $data['description'],
                     ]);
 
-                    // ✅ notifikasi
                     Notification::make()
                         ->title('Point berhasil ditambahkan')
                         ->success()
