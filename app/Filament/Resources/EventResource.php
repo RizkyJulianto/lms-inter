@@ -52,7 +52,7 @@ class EventResource extends Resource
                         ->disk('public')
                         ->directory('event-modules')
                         ->acceptedFileTypes(['application/pdf'])
-                        ->maxSize(51200)
+                        ->maxSize(112000)
                         ->preserveFilenames(),
                 Forms\Components\Checkbox::make('has_task')
                     ->label('Event ini memiliki tugas')
@@ -331,7 +331,7 @@ class EventResource extends Resource
                         $attendance && $attendance->final_project_link
                             ? 'Batal Submit'
                             : 'Submit Tugas'
-                    );
+                    ) ->color($attendance && $attendance->final_project_link ? 'danger' : 'success');
                 })
 
                 ->modalCancelActionLabel('Tutup')
