@@ -236,6 +236,7 @@ class EventResource extends Resource
                         $form->fill([
                             'name' => $record->name,
                             'point' => $record->point_reward,
+                            'description' => $record->description,
                             'final_project_link' => $attendance?->final_project_link,
                         ]);
                     })
@@ -318,10 +319,6 @@ class EventResource extends Resource
                             ->visible(fn(Event $record) => !$record->has_final_project),
 
                     ])
-                ->fillForm(fn($record) => [
-                    'name' => $record->name,
-                    'description' => $record->description,
-                ])
 
                     ->modalSubmitAction(function (StaticAction $action, Event $record) {
 
