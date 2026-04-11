@@ -52,7 +52,7 @@ class EventResource extends Resource
                         ->disk('public')
                         ->directory('event-modules')
                         ->acceptedFileTypes(['application/pdf'])
-                        ->maxSize(112000)
+                        ->maxSize(15360)
                         ->preserveFilenames(),
                     Forms\Components\Checkbox::make('has_task')
                         ->label('Event ini memiliki tugas')
